@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep-postgre
+  namespace: ns-indri
+  labels:
+    project: indri
+    env: dev
+    owner: nd
+    team: platform
+    costcenter: nd
+    object: deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod: pod-postgre-db
+  template:
+    metadata:
+      name: pod-postgre-db
+      namespace: ns-indri
+      labels:
+        pod: pod-postgre-db
+    spec:
+      containers:
+      - name: pod-postgre-db
+        image: postgres:17.11-alpine3.24
+        ports:
+          - name: postgresport
+            containerPort: 8080
+        env:
+          - name: POSTGRES_USER
+            value: admin
+          - name: POSTGRES_PASSWORD
+            value: P@ssw0rd
+          - name: POSTGRES_DB
+            value: indri-db
+
