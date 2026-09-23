@@ -5,6 +5,7 @@ metadata:
   namespace: ns-indri
   labels:
     project: indri
+    app: postgres
     env: dev
     owner: nd
     team: platform
@@ -24,10 +25,10 @@ spec:
     spec:
       containers:
       - name: pod-postgres-db
-        image: postgres:17.11-alpine3.24
+        image: postgres:17.10
         ports:
           - name: postgres-port
-            containerPort: 8080
+            containerPort: 5432
         env:
           - name: POSTGRES_USER
             value: admin
