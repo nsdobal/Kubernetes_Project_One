@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep-pgadmin
+  namespace: ns-indri
+  labels:
+    project: indri
+    app: pgadmin
+    env: dev
+    owner: nd
+    team: platform
+    costcenter: nd
+    object: deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod: pod-pgadmin-db
+  template:
+    metadata:
+      name: pod-pgadmin-db
+      namespace: ns-indri
+      labels:
+        pod: pod-pgadmin-db
+    spec:
+      containers:
+      - name: pod-pgadmin-db
+        image: dpage/pgadmin4:9.17.0
+        ports:
+          - name: pgadmin-http
+            containerPort: 80
+        env:
+          - name: PGADMIN_DEFAULT_EMAIL
+            value: admin@nsdobal.com
+          - name: PGADMIN_DEFAULT_PASSWORD
+            value: P@ssw0rd
