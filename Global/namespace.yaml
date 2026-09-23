@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns-indri
+  labels:
+    project: indri
+    env: dev
+    owner: nd
+    team: platform
+    cost-center: nd
+spec:
