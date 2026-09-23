@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dep-postgre
+  name: dep-postgres
   namespace: ns-indri
   labels:
     project: indri
@@ -14,19 +14,19 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      pod: pod-postgre-db
+      pod: pod-postgres-db
   template:
     metadata:
-      name: pod-postgre-db
+      name: pod-postgres-db
       namespace: ns-indri
       labels:
-        pod: pod-postgre-db
+        pod: pod-postgres-db
     spec:
       containers:
-      - name: pod-postgre-db
+      - name: pod-postgres-db
         image: postgres:17.11-alpine3.24
         ports:
-          - name: postgresport
+          - name: postgres-port
             containerPort: 8080
         env:
           - name: POSTGRES_USER
