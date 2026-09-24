@@ -12,7 +12,7 @@ metadata:
     costcenter: nd
     object: service    
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     pod: pod-pgadmin-db
   ports:
