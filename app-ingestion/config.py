@@ -14,7 +14,7 @@ class Settings:
     # Example: postgresql://postgres:postgres@localhost:5432/axiondb
     DATABASE_URL: str = os.getenv(
         "DATABASE_URL",
-        "postgresql://admin:P@ssw0rd@svc-postgres-db:5432/indri-db",
+        "postgresql://admin:Passw0rd@svc-postgres-db:5432/indri-db",
     )
 
 settings = Settings()
