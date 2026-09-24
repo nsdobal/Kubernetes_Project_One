@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-app-ingest
+  namespace: ns-indri
+  labels:
+    project: indri
+    app: ingest
+    env: dev
+    owner: nd
+    team: platform
+    costcenter: nd
+    object: service    
+spec:
+  type: ClusterIP
+  selector:
+    pod: app-ingest
+  ports:
+    - name: app-ingest-port
+      port: 80
+      targetPort: 8000

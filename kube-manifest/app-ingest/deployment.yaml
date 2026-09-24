@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep-app-ingest
+  namespace: ns-indri
+  labels:
+    project: indri
+    app: ingest
+    env: dev
+    owner: nd
+    team: platform
+    costcenter: nd
+    object: deployment
+    tag: dep-app-ingest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod: app-ingest
+  template:
+    metadata:
+      name: pod-app-ingest
+      namespace: ns-indri
+      labels:
+        pod: app-ingest
+    spec:
+      imagePullSecrets:
+        - name: acr-pull-secret
+      containers:
+        - name: app-ingest
+          image: ndacr20260924.azurecr.io/app-ingest:v1
+          ports:
+            - name: app-ingest-port
+              containerPort: 8000
