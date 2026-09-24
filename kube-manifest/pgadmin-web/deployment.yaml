@@ -33,4 +33,4 @@ spec:
           - name: PGADMIN_DEFAULT_EMAIL
             value: admin@nsdobal.com
           - name: PGADMIN_DEFAULT_PASSWORD
-            value: P@ssw0rd
+            value: Passw0rd
