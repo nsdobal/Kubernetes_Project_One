@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-app-frontend-ui
+  namespace: ns-indri
+  labels:
+    project: indri
+    app: frontend-ui
+    env: dev
+    owner: nd
+    team: platform
+    costcenter: nd
+    object: service
+    tag: svc-app-frontend-ui    
+spec:
+  type: LoadBalancer
+  selector:
+    pod: pod-app-frontend-ui
+  ports:
+  - name: port-svc-fe-ui
+    port: 80
+    targetPort: 80
