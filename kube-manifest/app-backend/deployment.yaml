@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep-app-backend
+  namespace: ns-indri
+  labels:
+    project: indri
+    app: backend
+    env: dev
+    owner: nd
+    team: platform
+    costcenter: nd
+    object: deployment
+    tag: dep-app-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod: pod-app-backend
+  template:
+    metadata:
+      name: pod-app-backend
+      namespace: ns-indri
+      labels:
+        pod: pod-app-backend
+    spec:
+      containers:
+        - name: pod-app-backend
+          image: ndacr20260924.azurecr.io/app-backend:latest
+          imagePullPolicy: Always
+          ports:
+            - name: port-app-be
+              containerPort: 8000
+      imagePullSecrets:
+        - name: acr-pull-secret  
