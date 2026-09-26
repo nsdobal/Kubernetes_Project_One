@@ -88,7 +88,7 @@ export function MapWidget({ regionSummary }: MapWidgetProps) {
       >
         {/* Dark Matter TileLayer */}
         <TileLayer
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?key=cb1_3ziv_1_9a945ea3f65f9d3406b98ddd"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
         />
         
