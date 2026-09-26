@@ -1,0 +1,56 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: agic-indri
+  namespace: ns-indri
+  labels:
+    project: indri
+    app: ingress
+    env: dev
+    owner: nd
+    team: platform
+    costcenter: nd
+    object: ingress    
+spec:
+  ingressClassName: azure-application-gateway
+  rules:
+  - host: pgadmin.nsdobal.online
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: svc-pgadmin
+            port:
+              number: 80
+  - host: indri.nsdobal.online
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: svc-app-frontend-ui
+            port:
+              number: 80
+  - host: nsdobal.online
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: svc-app-frontend-ui
+            port:
+              number: 80            
+  - host: api.nsdobal.online
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: svc-app-backend
+            port:
+              number: 8000
