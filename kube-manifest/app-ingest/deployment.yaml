@@ -28,9 +28,9 @@ spec:
         - name: acr-pull-secret
       containers:
         - name: app-ingest
-          image: ndacr20260924.azurecr.io/app-ingest:v1
+          image: ndacr20260924.azurecr.io/app-ingest:latest
           imagePullPolicy: Always
           ports:
-            - name: app-ingest-port
+            - name: port-app-ingest
               containerPort: 8000
               

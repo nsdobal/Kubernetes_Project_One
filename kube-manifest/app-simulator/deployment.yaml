@@ -28,7 +28,7 @@ spec:
       - name: acr-pull-secret
       containers:
         - name: app-ingest
-          image: ndacr20260924.azurecr.io/app-simulator:v1
+          image: ndacr20260924.azurecr.io/app-simulator:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
