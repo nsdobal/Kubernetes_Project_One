@@ -15,7 +15,7 @@ import { SystemSettings } from './components/pages/SystemSettings';
 import { DashboardView } from './components/pages/DashboardView';
 import { NotFound } from './components/pages/NotFound';
 
-const API_BASE = 'http://api.nsdobal.online';
+const API_BASE = 'http://svc-app-backend:8000';
 
 function App() {
   const location = useLocation();
