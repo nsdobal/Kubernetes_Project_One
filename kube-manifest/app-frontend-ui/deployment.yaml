@@ -1,5 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
+
 metadata:
   name: dep-app-frontend-ui
   namespace: ns-indri
@@ -12,11 +13,14 @@ metadata:
     costcenter: nd
     object: deployment
     tag: dep-app-frontend-ui    
+
 spec:
   replicas: 1
+
   selector:
     matchLabels:
       pod: pod-app-frontend-ui
+
   template:
     metadata:
       name: pod-app-frontend-ui
@@ -25,11 +29,20 @@ spec:
         pod: pod-app-frontend-ui
     spec:
       containers:
-        - name: pod-app-frontend-ui
-          image: ndacr20260924.azurecr.io/app-frontend-ui:latest
-          ports:
-            - name: port-fe-ui
-              containerPort: 80
-          imagePullPolicy: Always
+      - name: pod-app-frontend-ui
+        image: ndacr20260924.azurecr.io/app-frontend-ui:latest
+        ports:
+          - name: port-fe-ui
+            containerPort: 80
+        imagePullPolicy: Always
+
       imagePullSecrets:
-        - name: acr-pull-secret
+      - name: acr-pull-secret
+
+      resources:
+        requests:
+          cpu: 50m
+          memory: 128Mi
+        limits:
+          cpu: 100m
+          memory: 256Mi
