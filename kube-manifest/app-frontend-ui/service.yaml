@@ -13,7 +13,7 @@ metadata:
     object: service
     tag: svc-app-frontend-ui    
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     pod: pod-app-frontend-ui
   ports:
