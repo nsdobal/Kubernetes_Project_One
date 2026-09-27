@@ -3,6 +3,9 @@ kind: Ingress
 metadata:
   name: agic-indri
   namespace: ns-indri
+  annotations:
+    appgw.ingress.kubernetes.io/health-probe-path: "/health"
+    appgw.ingress.kubernetes.io/health-probe-status-codes: "200-399"
   labels:
     project: indri
     app: ingress
