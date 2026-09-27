@@ -2,17 +2,17 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 
 metadata:
-  name: hpa-app-backend-ui
+  name: hpa-app-backend
   namespace: ns-indri
   labels:
     project: indri
-    app: app-backend-ui
+    app: app-backend
     env: dev
     owner: nd
     team: platform
     costcenter: nd
     object: hpa
-    tag: hpa-app-backend-ui
+    tag: hpa-app-backend
 
 spec:
   minReplicas: 1
