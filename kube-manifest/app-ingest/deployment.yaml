@@ -1,5 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
+
 metadata:
   name: dep-app-ingest
   namespace: ns-indri
@@ -12,25 +13,36 @@ metadata:
     costcenter: nd
     object: deployment
     tag: dep-app-ingest
+
 spec:
   replicas: 1
+
   selector:
     matchLabels:
       pod: app-ingest
+
   template:
     metadata:
       name: pod-app-ingest
       namespace: ns-indri
       labels:
         pod: app-ingest
+
     spec:
       imagePullSecrets:
         - name: acr-pull-secret
       containers:
-        - name: app-ingest
-          image: ndacr20260924.azurecr.io/app-ingest:latest
-          imagePullPolicy: Always
-          ports:
-            - name: port-app-ingest
-              containerPort: 8000
+      - name: app-ingest
+        image: ndacr20260924.azurecr.io/app-ingest:latest
+        imagePullPolicy: Always
+        ports:
+          - name: port-app-ingest
+            containerPort: 8000
               
+      resources:
+        requests:
+          cpu: 100m
+          memory: 256Mi
+        limits:
+          cpu: 200m
+          memory: 512Mi
