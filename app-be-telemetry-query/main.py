@@ -32,6 +32,11 @@ app = FastAPI(
     lifespan=lifespan
 )
 
+@app.get("/health")
+async def health():
+    return {"status": "healthy"}
+
+    
 # Enable CORS for frontend
 app.add_middleware(
     CORSMiddleware,
