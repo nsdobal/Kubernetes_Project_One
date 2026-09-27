@@ -7,7 +7,7 @@ import { Throughput } from '../Throughput';
 import { DigitalTwin } from '../DigitalTwin';
 import { ThermalCamera } from '../ThermalCamera';
 
-const API_BASE = 'http://svc-app-backend:8000';
+const API_BASE = '/api';
 
 interface DashboardViewProps {
   devices: any[];
