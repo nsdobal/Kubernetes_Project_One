@@ -1,5 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
+
 metadata:
   name: dep-postgres
   namespace: ns-indri
@@ -11,11 +12,14 @@ metadata:
     team: platform
     costcenter: nd
     object: deployment
+
 spec:
   replicas: 1
+
   selector:
     matchLabels:
       pod: pod-postgres-db
+
   template:
     metadata:
       name: pod-postgres-db
@@ -27,8 +31,8 @@ spec:
       - name: pod-postgres-db
         image: postgres:17.10
         ports:
-          - name: postgres-port
-            containerPort: 5432
+        - name: postgres-port
+          containerPort: 5432
         env:
           - name: POSTGRES_USER
             value: admin
@@ -37,3 +41,10 @@ spec:
           - name: POSTGRES_DB
             value: indri-db
 
+      resources:
+        requests:
+          cpu: 500m
+          memory: 1024Mi
+        limits:
+          cpu: 1000m
+          memory: 2048Mi
