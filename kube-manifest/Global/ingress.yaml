@@ -3,9 +3,9 @@ kind: Ingress
 metadata:
   name: agic-indri
   namespace: ns-indri
-  annotations:
-    appgw.ingress.kubernetes.io/health-probe-path: "/health"
-    appgw.ingress.kubernetes.io/health-probe-status-codes: "200-399"
+#  annotations:
+#    appgw.ingress.kubernetes.io/health-probe-path: "/health"
+#    appgw.ingress.kubernetes.io/health-probe-status-codes: "200-399"
   labels:
     project: indri
     app: ingress
@@ -27,16 +27,6 @@ spec:
             name: svc-pgadmin
             port:
               number: 80
-  - host: indri.nsdobal.online
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: svc-app-frontend-ui
-            port:
-              number: 80
   - host: nsdobal.online
     http:
       paths:
@@ -47,13 +37,4 @@ spec:
             name: svc-app-frontend-ui
             port:
               number: 80            
-  - host: api.nsdobal.online
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: svc-app-backend
-            port:
-              number: 8000
+
